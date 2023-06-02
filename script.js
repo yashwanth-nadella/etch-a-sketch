@@ -8,11 +8,11 @@ for(let i=0;i<n;i++){
     for(let j=0;j<n;j++){
         let col = document.createElement('div');
         // col.style.cssText = "width: 15px;height: 15px; border-style: solid; border-color: black; background-color: pink";
-        col.style.cssText = "flex: 1; background-color: pink";
+        col.style.cssText = "flex: 1; background-color: white";
         col.classList.add("col");
         col.addEventListener('mouseover', () => {
             console.log(col);
-            col.style.backgroundColor = 'blue';
+            col.style.backgroundColor = 'black';
         });
         row.appendChild(col);
     }
