@@ -1,6 +1,5 @@
 const container = document.querySelector(".container");
 console.log(container);
-
 for(let i=0;i<16;i++){
     let row = document.createElement('div');
     row.classList.add("row");
