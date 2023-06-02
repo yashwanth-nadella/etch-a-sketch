@@ -1,12 +1,14 @@
 const container = document.querySelector(".container");
 console.log(container);
-for(let i=0;i<16;i++){
+const n = prompt("Enter the number of squares");
+for(let i=0;i<n;i++){
     let row = document.createElement('div');
     row.classList.add("row");
-    row.style.cssText = "display: flex;";
-    for(let j=0;j<16;j++){
+    row.style.cssText = "display: flex; flex: 1";
+    for(let j=0;j<n;j++){
         let col = document.createElement('div');
-        col.style.cssText = "width: 15px;height: 15px; border-style: solid; border-color: black; background-color: pink";
+        // col.style.cssText = "width: 15px;height: 15px; border-style: solid; border-color: black; background-color: pink";
+        col.style.cssText = "flex: 1; background-color: pink";
         col.classList.add("col");
         col.addEventListener('mouseover', () => {
             console.log(col);
