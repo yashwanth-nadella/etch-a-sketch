@@ -1,5 +1,6 @@
 function generateCanvas(n){
     let container = document.querySelector(".container");
+    container.innerHTML = "";
     console.log(container);
     for(let i=0;i<n;i++){
         let row = document.createElement('div');
@@ -50,7 +51,7 @@ function rainbowPen(){
         }
     }
 }
-function eraser(){
+function eraserPen(){
     let container = document.querySelector(".container");
     console.log(container);
     console.log(container.childNodes.length);
@@ -67,7 +68,42 @@ function eraser(){
         }
     }
 }
+function isNumeric(value) {
+    return /[0-9]+/.test(value);
+}
 
 generateCanvas(16);
 // let n = prompt("Enter the number of squares");
-clearCanvas();
+const go = document.querySelector("#go");
+const text = document.querySelector("#text");
+const clear = document.querySelector("#clear");
+const eraser = document.querySelector("#eraser");
+const rainbow = document.querySelector("#rainbow");
+
+clear.addEventListener("click", ()=> {
+    clearCanvas();
+});
+
+eraser.addEventListener("click", () => {
+    eraserPen();
+});
+
+rainbow.addEventListener("click", ()=> {
+    rainbowPen();
+});
+
+go.addEventListener("click", ()=> {
+    console.log(text.value);
+    let val = text.value;
+    if(isNumeric(val)){
+        if(val>64 || val<1){
+            alert("Enter a value in the range of 1 to 64");
+        }else{
+            clearCanvas();
+            generateCanvas(val);
+        }
+    }else{
+        alert("Enter a numeric value");
+    }
+
+});
