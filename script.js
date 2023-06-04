@@ -1,4 +1,4 @@
-function generateCanvas(n){
+function generateCanvas(n,color){
     let container = document.querySelector(".container");
     pixels.textContent = `There are ${n*n} pixels in the canvas`;
     container.innerHTML = "";
@@ -14,7 +14,7 @@ function generateCanvas(n){
             col.classList.add("col");
             col.addEventListener('mouseover', () => {
                 // console.log(col);
-                col.style.backgroundColor = 'black';
+                col.style.backgroundColor = color;
             });
             row.appendChild(col);
         }
@@ -84,11 +84,11 @@ const slider = document.querySelector("#slider");
 const pixels = document.querySelector("#pixels");
 const inkColor = document.querySelector("#penColor");
 
-generateCanvas(16);
+generateCanvas(16,"black");
 
 slider.addEventListener("mouseup", ()=>{
     clearCanvas();
-    generateCanvas(slider.value);
+    generateCanvas(slider.value,inkColor.value);
 })
 
 clear.addEventListener("click", ()=> {
