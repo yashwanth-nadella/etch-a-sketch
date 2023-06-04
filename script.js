@@ -1,5 +1,6 @@
 function generateCanvas(n){
     let container = document.querySelector(".container");
+    pixels.textContent = `There are ${n*n} pixels in the canvas`;
     container.innerHTML = "";
     console.log(container);
     for(let i=0;i<n;i++){
@@ -51,7 +52,7 @@ function rainbowPen(){
         }
     }
 }
-function eraserPen(){
+function penColor(color){
     let container = document.querySelector(".container");
     console.log(container);
     console.log(container.childNodes.length);
@@ -62,7 +63,7 @@ function eraserPen(){
         for(let j=0;j<row.childNodes.length;j++){
             let col = row.childNodes[j];
             col.addEventListener('mouseover', ()=> {
-                col.style.backgroundColor = "white";
+                col.style.backgroundColor = color;
                 // console.log(col);
             });
         }
@@ -72,38 +73,53 @@ function isNumeric(value) {
     return /[0-9]+/.test(value);
 }
 
-generateCanvas(16);
+
 // let n = prompt("Enter the number of squares");
-const go = document.querySelector("#go");
-const text = document.querySelector("#text");
+// const go = document.querySelector("#go");
+// const text = document.querySelector("#text");
 const clear = document.querySelector("#clear");
 const eraser = document.querySelector("#eraser");
 const rainbow = document.querySelector("#rainbow");
+const slider = document.querySelector("#slider");
+const pixels = document.querySelector("#pixels");
+const inkColor = document.querySelector("#penColor");
+
+generateCanvas(16);
+
+slider.addEventListener("mouseup", ()=>{
+    clearCanvas();
+    generateCanvas(slider.value);
+})
 
 clear.addEventListener("click", ()=> {
     clearCanvas();
 });
 
 eraser.addEventListener("click", () => {
-    eraserPen();
+    penColor("white");
 });
 
 rainbow.addEventListener("click", ()=> {
     rainbowPen();
 });
 
-go.addEventListener("click", ()=> {
-    console.log(text.value);
-    let val = text.value;
-    if(isNumeric(val)){
-        if(val>64 || val<1){
-            alert("Enter a value in the range of 1 to 64");
-        }else{
-            clearCanvas();
-            generateCanvas(val);
-        }
-    }else{
-        alert("Enter a numeric value");
-    }
-
+inkColor.addEventListener("change", ()=> {
+    console.log(inkColor.value);
+    penColor(inkColor.value);
 });
+
+// go.addEventListener("click", ()=> {
+//     console.log(text.value);
+//     let val = text.value;
+//     if(isNumeric(val)){
+//         if(val>64 || val<1){
+//             alert("Enter a value in the range of 1 to 64");
+//         }else{
+//             clearCanvas();
+//             generateCanvas(val);
+//         }
+//     }else{
+//         alert("Enter a numeric value");
+//     }
+
+// });

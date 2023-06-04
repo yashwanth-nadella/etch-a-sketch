@@ -12,10 +12,15 @@
     <h1>Etch-A-Sketch</h1>
     <div class = "center">
         <div class="left">
+            <div class="colorPicker">
+                <input type="color" id="penColor" name="color" value="black">
+                <label for="color">Pen color</label>
+            </div>
             <div>
-                <h3>Number of pixels in the grid</h3>
-                <input type="text" name="text" id="text">
-                <button id="go">Go!</button>
+                <h3 id="pixels">Number of pixels in the grid</h3>
+                <!-- <input type="text" name="text" id="text">
+                <button id="go">Go!</button> -->
+                <input type="range" min="1" max="64" value="15" id="slider" class="slider">
             </div>
             <div>
                 <h3>Clear the screen</h3>
